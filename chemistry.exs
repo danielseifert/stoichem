@@ -24,14 +24,6 @@ defmodule Chemistry do
   "uut" => 284, "v" => 50.94, "w" => 183.84, "xe" => 131.29, "y" => 88.91,
   "yb" => 173.05, "zn" => 65.38, "zr" => 91.22}
 
-  def hello(name) do
-    "Welcome to Chemistry, #{name}!!!"
-  end
-
-  def form_split(input) do
-    String.split(input, ~r{\d})
-  end
-
   def return(element) do
     @p_table[element]
   end
