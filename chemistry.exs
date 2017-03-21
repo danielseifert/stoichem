@@ -24,24 +24,30 @@ defmodule Chemistry do
   "uut" => 284, "v" => 50.94, "w" => 183.84, "xe" => 131.29, "y" => 88.91,
   "yb" => 173.05, "zn" => 65.38, "zr" => 91.22}
 
-  def return(element) do
-    @p_table[element]
+  def m2g(num, formula) do
+    nog = add_up(formula) * num
+    "#{nog} grams of #{formula}"
   end
 
-  def convert(formula) do
+  def g2m(num, formula) do
+    nom = num / add_up(formula) 
+    "#{nom} moles of #{formula}"
+  end
+
+  defp convert(formula) do
     Regex.scan(~r/([a-z]+)/, formula)
     |> List.flatten
     |> Enum.drop_every(2)
     |> Enum.map(fn x -> @p_table[x] end)
   end
 
-  def convert_2(formula) do
+  defp convert_2(formula) do
     Regex.scan(~r/\d+/, formula)
     |> List.flatten
     |> Enum.map(fn x -> String.to_integer(x) end)
   end
 
-  def add_up(formula) do
+  defp add_up(formula) do
     list_1 = convert(formula)
     list_2 = convert_2(formula)
 
@@ -49,7 +55,7 @@ defmodule Chemistry do
       list_1
       |> Enum.zip(list_2)
       |> Enum.reduce(0, fn({a, b}, acc) -> acc + (a * b) end)
-
-    IO.puts sum
+    sum
   end
+
 end
