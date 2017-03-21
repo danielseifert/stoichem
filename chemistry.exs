@@ -3,7 +3,7 @@ defmodule Chemistry do
   "as" => 74.92, "at" => 210, "au" => 196.97, "b" => 10.81, "ba" => 137.33,
   "be" => 9.01, "bh" => 270, "bi" => 208.98, "bk" => 247, "br" => 79.90,
   "c" => 12.01, "ca" => 40.08, "cd" => 112.41, "ce" => 140.12, "cf" => 251,
-  "cle" => 35.45, "cm" => 247, "cn" => 285, "co" => 58.93, "cr" => 52.00,
+  "cl" => 35.45, "cm" => 247, "cn" => 285, "co" => 58.93, "cr" => 52.00,
   "cs" => 132.91, "cu" => 63.55, "db" => 268, "ds" => 281, "dy" => 162.50,
   "er" => 167.26, "es" => 252, "eu" => 151.96, "f" => 19.00, "fe" => 55.85,
   "fl" => 289, "fm" => 257, "fr" => 223, "ga" => 69.72, "gd" => 157.25,
@@ -48,7 +48,7 @@ defmodule Chemistry do
     sum =
       list_1
       |> Enum.zip(list_2)
-      |> Enum.reduce(0, fn({a, b}, sum) -> sum + (a * b) end)
+      |> Enum.reduce(0, fn({a, b}, acc) -> acc + (a * b) end)
 
     IO.puts sum
   end
