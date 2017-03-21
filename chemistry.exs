@@ -40,4 +40,16 @@ defmodule Chemistry do
     |> List.flatten
     |> Enum.map(fn x -> String.to_integer(x) end)
   end
+
+  def add_up(formula) do
+    list_1 = convert(formula)
+    list_2 = convert_2(formula)
+
+    sum =
+      list_1
+      |> Enum.zip(list_2)
+      |> Enum.reduce(0, fn({a, b}, sum) -> sum + (a * b) end)
+
+    IO.puts sum
+  end
 end
