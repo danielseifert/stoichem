@@ -24,14 +24,42 @@ defmodule Chemistry do
   "uut" => 284, "v" => 50.94, "w" => 183.84, "xe" => 131.29, "y" => 88.91,
   "yb" => 173.05, "zn" => 65.38, "zr" => 91.22}
 
+  def chem(num_0, "g", formula, num_1, num_2, "g", formula_2) do
+    start = g2m(num_0, formula)
+    ratio = num_1 / num_2
+    moles = ratio * start
+    prod = m2g(moles, formula_2)
+    "#{prod} grams of #{formula_2}"
+  end
+
+  def chem(num_0, "m", formula, num_1, num_2, "g", formula_2) do
+    ratio = num_1 / num_2
+    moles = ratio * num_0
+    prod = m2g(moles, formula_2)
+    "#{prod} grams of #{formula_2}"
+  end
+
+  def chem(num_0, "g", formula, num_1, num_2, "m", formula_2) do
+    start = g2m(num_0, formula)
+    ratio = num_1 / num_2
+    moles = ratio * start
+    "#{moles} moles of #{formula_2}"
+  end
+
+  def chem(num_0, "m", formula, num_1, num_2, "m", formula_2) do
+    ratio = num_1 / num_2
+    moles = ratio * num_0
+    "#{moles} moles of #{formula_2}"
+  end
+
   def m2g(num, formula) do
     nog = add_up(formula) * num
-    "#{nog} grams of #{formula}"
+    nog
   end
 
   def g2m(num, formula) do
     nom = num / add_up(formula) 
-    "#{nom} moles of #{formula}"
+    nom
   end
 
   defp convert(formula) do
